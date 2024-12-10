@@ -38,6 +38,15 @@ def init_music() -> None:
         "f",  # 无效果
         50,  # 设置适中的节奏
     )
+    # 设置圣诞节的旋律（参考《铃儿响叮当》）
+    pyxel.sounds[4].set(
+        "e4e4e4 r e4e4e4 r e4g4c4d4 e4 r"
+        "f4f4f4f4r f4f4f4f4r f4g4c4d4 e4 r",
+        "t",
+        "6",
+        "f",
+        50
+    )
 
 
 # 播放小星星音乐
@@ -59,6 +68,9 @@ def play_click_sound():
 def play_birthday_music():
     pyxel.play(0, 3, loop=True)
 
+# 铃儿响叮当
+def play_christmas_music():
+    pyxel.play(0, 4, loop=True)
 
 # 播放背景音乐
 def play_background_music():
@@ -68,5 +80,15 @@ def play_background_music():
         <= datetime(2024, 11, 4, 23, 59, 59)
     ):
         play_birthday_music()
+    elif datetime.now().month == 12:
+        play_christmas_music()
     else:
         play_star_music()
+
+if __name__ == "__main__":
+    # 测试背景音乐
+    pyxel.init(256, 256)
+    pyxel.cls(0)
+    init_music()
+    play_christmas_music()
+    pyxel.show()
