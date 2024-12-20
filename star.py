@@ -17,6 +17,11 @@ class Star:
             return self.color_index == other.color_index
         return False
 
+class SnowStar(Star):
+    def __init__(self, color_index: int) -> None:
+        super().__init__(color_index)
+        self.v = 32
 
 def get_star(color_index: int) -> Star:
     return Star(color_index)
+    # return SnowStar(color_index)
