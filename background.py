@@ -1,5 +1,5 @@
 import pyxel
-
+from datetime import date
 
 class Background:
     def update(self) -> None:
@@ -70,5 +70,7 @@ class SnowBackground(Background):
             pyxel.blt(x, y, 0, 0, 48, 7, 7, 0)
 
 def get_background() -> Background:
-    # return StarBackground()
-    return SnowBackground()
+    if date.month in (12, 1, 2):
+        return SnowBackground()
+    else:
+        return StarBackground()
